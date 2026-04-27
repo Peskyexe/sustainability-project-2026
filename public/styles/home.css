@@ -1,0 +1,25 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: oklch(0.96 0.02 115);
+    padding: 20px 30px;
+    /* color: white;  */
+}
+
+.nav-links{
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li{
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: oklch(0.35 0.01 135);
+    font-size: 20px;
+    transition: color 0,3s; 
+}
+

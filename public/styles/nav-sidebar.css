@@ -1,0 +1,72 @@
+.nav-sidebar {
+    background-color: var(--bg-dark);
+    background-image: url("../assets/nav-sidebar-background-transparent.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom left;
+
+    display: flex;
+    flex-direction: column;
+    padding: 1em 1.25em;
+    gap: 2em;
+
+    a {
+        text-decoration: none;
+        color: var(--text-muted);
+    }
+
+    header a {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+        "area-1 area-2"
+        "area-1 area-3";
+        gap: 0 0.75em;
+
+        i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-family: 'Quicksand';
+            font-weight: 700;
+            font-size: 2em;
+        }
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4em;
+
+        a {
+            color: var(--text-muted);
+        
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1em;
+            padding: 0.6em;
+            border-radius: 7px;
+
+
+            i {
+                font-size: 25px;
+            }
+
+            p {
+                font-weight: 500;
+            }
+        }
+
+        a.selected {
+            background-color: var(--primary-muted);
+        }
+    }
+}

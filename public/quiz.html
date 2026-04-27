@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watt Wise - Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/global.css">
+
+    <link rel="stylesheet" href="styles/nav-sidebar.css">
+    <link rel="stylesheet" href="styles/quiz.css">
+</head>
+<body>
+    <nav class="nav-sidebar grid-1">
+        <header>
+            <a href="home.html">
+                <i class="fa-solid fa-leaf grid-1"></i>
+                <h1 class="grid-2">WattWise</h1>
+                <span class="grid-3">Small choices. Big changes.</span>
+            </a>
+        </header>
+
+        <ul>
+            <li>
+                <a class="selected" href="#">
+                    <i class="fa-regular fa-rectangle-list"></i>
+                    <p>Quiz</p>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-list-check"></i>
+                    <p>Results</p>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-regular fa-clock"></i>
+                    <p>History</p>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-regular fa-lightbulb"></i>
+                    <p>Tips</p>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-regular fa-user"></i>
+                    <p>Profile</p>       
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="grid-2">
+        <section class="topbar-wrapper grid-1">
+            <i class="fa-regular fa-bell"></i>
+            <div class="profile-wrapper">
+                <span class="profile-icon">KN</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section class="quiz-wrapper grid-2">
+            <div class="header-wrapper">
+                <div class="title-wrapper">
+                    <h2>Quiz</h2>
+                    <p>How many resources are we actually using?</p>
+                </div>
+                <div>
+                    <h2>Part 1</h2>
+                </div>
+                <div class="progress-bar-wrapper">
+                    <div>
+                        <p class="grid-1">Question 1 of 6</p>
+                        <div class="grid-2" id="progress-bar"></div>
+                        <p class="grid-3" id="progress-label">17%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="main-wrapper">
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

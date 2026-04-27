@@ -1,0 +1,32 @@
+{
+    "part-1": [
+
+    ],
+    "part-2": [
+        {
+            "type": "multi-choice",
+            "name-id": "email",
+            "question": "Hvor mange e-poster mottar du daglig?",
+            "description": "E-poster lagres i datsentre som bruker mye energi. Mindre rot = mindre utslipp!",
+            "svg-icon-name": "full-email-icon",
+            "choices": [
+                {
+                    "text": "0-10 e-poster",
+                    "value": 5,
+                    "svg-icon-name": "email-icon"
+                },
+                {
+                    "text": "10-50 e-poster",
+                    "value": 30,
+                    "svg-icon-name": "email-icon"
+                },
+                {
+                    "text": "50+ e-poster",
+                    "value": 60,
+                    "svg-icon-name": "email-icon"
+                }
+            ]
+        }
+    ]
+}
+

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --bg-dark: oklch(0.96 0.02 115);
+    --bg: oklch(0.98 0.01 98);
+    --bg-light: oklch(0.99 0 70);
+    --text: oklch(0.17 0.01 135);
+    --text-muted: oklch(0.4 0.01 135);
+    --highlight: oklch(1 0.01 135);
+    --border: oklch(0.6 0.01 135);
+    --border-muted: oklch(0.7 0.01 135);
+    --primary: oklch(0.61 0.1 135);
+    --primary-muted: oklch(0.85 0.04 120);
+    --danger: oklch(0.5 0.05 30);
+    --warning: oklch(0.5 0.05 100);
+    --success: oklch(0.5 0.05 160);
+    --info: oklch(0.5 0.05 260);
+
+    --shadow: 0px 2px 2px oklch(0 0 0 / 0.15), 0px 4px 4px oklch(0 0 0 / 0.05);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-muted);
+    min-height: 100vh;
+}
+
+.grid-1 {
+    grid-area: area-1;
+}
+.grid-2 {
+    grid-area: area-2;
+}
+.grid-3 {
+    grid-area: area-3;
+}
+.grid-4 {
+    grid-area: area-4;
+}
