@@ -21,40 +21,30 @@
         </header>
 
         <ul>
-            <li>
-                <a class="selected" href="#">
-                    <i class="fa-regular fa-rectangle-list"></i>
-                    <p>Quiz</p>
-                </a>
-            </li>
+            <a class="selected" href="#">
+                <i class="fa-regular fa-rectangle-list"></i>
+                <p>Quiz</p>
+            </a>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-list-check"></i>
-                    <p>Results</p>
-                </a>
-            </li>
+            <a href="#">
+                <i class="fa-solid fa-list-check"></i>
+                <p>Results</p>
+            </a>
 
-            <li>
-                <a href="#">
-                    <i class="fa-regular fa-clock"></i>
-                    <p>History</p>
-                </a>
-            </li>
+            <a href="#">
+                <i class="fa-regular fa-clock"></i>
+                <p>History</p>
+            </a>
 
-            <li>
-                <a href="#">
-                    <i class="fa-regular fa-lightbulb"></i>
-                    <p>Tips</p>
-                </a>
-            </li>
+            <a href="#">
+                <i class="fa-regular fa-lightbulb"></i>
+                <p>Tips</p>
+            </a>
 
-            <li>
-                <a href="#">
-                    <i class="fa-regular fa-user"></i>
-                    <p>Profile</p>       
-                </a>
-            </li>
+            <a href="#">
+                <i class="fa-regular fa-user"></i>
+                <p>Profile</p>       
+            </a>
         </ul>
     </nav>
 
@@ -68,15 +58,13 @@
         </section>
 
         <section class="quiz-wrapper grid-2">
-            <div class="header-wrapper">
-                <div class="title-wrapper">
-                    <h2>Quiz</h2>
-                    <p>How many resources are we actually using?</p>
+            <div class="quiz-header-wrapper">
+                <div class="quiz-title-wrapper">
+                    <img class="grid-1" src="assets/icons/leaf-icon.svg" width="20">
+                    <h2 class="grid-2">Quiz</h2>
+                    <p class="grid-3">How many resources are we actually using?</p>
                 </div>
-                <div>
-                    <h2>Part 1</h2>
-                </div>
-                <div class="progress-bar-wrapper">
+                <div class="quiz-progress-bar-wrapper">
                     <div>
                         <p class="grid-1">Question 1 of 6</p>
                         <div class="grid-2" id="progress-bar"></div>
@@ -84,9 +72,36 @@
                     </div>
                 </div>
             </div>
-            <div class="main-wrapper">
 
-            </div>
+            <form class="quiz-main-wrapper">
+                <div class=" grid-1 quiz-question-wrapper">
+                    <img class="grid-1" src="assets/icons/question-email-big.svg" width="60"></img>
+                    <h2 class="grid-2">How many e-mails do you receive daily?</h2>
+                    <span class="grid-3">E-mails are saved in datacenters that use a lot of energy.<br>Less trash = less emissions</span>
+                </div>
+                
+                <ul class="quiz-choices-wrapper">
+                    <label class="quiz-choice">
+                        <input type="radio" id="quiz-choice-1" name="quiz-choice">
+                        <img src="assets/icons/question-email-small.svg" width="40"></img>
+                        <span class="quiz-choice-text">0 — 10 e-mails</span>
+                    </label>
+                    <label class="quiz-choice">
+                        <input type="radio" id="quiz-choice-2" name="quiz-choice">
+                        <img src="assets/icons/question-email-small.svg" width="40"></img>
+                        <span class="quiz-choice-text">10 — 50 e-mails</span>
+                    </label>
+                    <label class="quiz-choice">
+                        <input type="radio" id="quiz-choice-3" name="quiz-choice">
+                        <img src="assets/icons/question-email-small.svg" width="40"></img>
+                        <span class="quiz-choice-text">50+ e-mails</span>
+                    </label>
+                </ul>
+
+                <div class="quiz-buttons-wrapper">
+                    <button type="submit" id="quiz-next-question-button">Next question <i class="fa-solid fa-arrow-right-long"></i></button>
+                </div>
+            </form>
         </section>
     </main>
 </body>

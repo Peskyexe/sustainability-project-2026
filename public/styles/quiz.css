@@ -54,18 +54,37 @@ main {
 
     border-radius: 10px;
     padding: 1.25em 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5em;
 
-    .header-wrapper {
+    .quiz-header-wrapper {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+
+        .quiz-title-wrapper {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto 1fr;
+            grid-template-areas:
+            "area-1 area-2"
+            "area-1 area-3";
+            gap: 0.25em 1.25em;
+
+            img {
+                padding-top: 6px;
+            }
+        }
 
         h2 {
             font-family: 'Quicksand';
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text);
         }
 
-        .progress-bar-wrapper {
+        .quiz-progress-bar-wrapper {
             display: flex;
             justify-content: flex-end;
 
@@ -77,6 +96,7 @@ main {
                     "area-1 area-1"
                     "area-2 area-3";
                 gap: 0.25em;
+                align-items: center;
 
                 #progress-bar {
                     width: 280px;
@@ -84,6 +104,105 @@ main {
                     background: linear-gradient(90deg, var(--primary) 17%, var(--bg-dark) 17%);
                     border-radius: 28px;
                 }
+            }
+        }
+    }
+
+    .quiz-main-wrapper {
+        width: 80%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        padding-bottom: 2em;
+
+        .quiz-question-wrapper {
+            margin: auto;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+            "area-1 area-2"
+            "area-1 area-3";
+            gap: 0em 1.5em;
+        }
+
+        .quiz-choices-wrapper {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75em;
+            flex: 1;
+
+            .quiz-choice {
+                background-color: var(--bg-alt);
+                border: 2px solid var(--border-muted);
+
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                gap: 1.5em;
+                padding: 0.75em 1em;
+
+                input {
+                    background-color: var(--bg-light);
+                    border: 2px solid var(--border-muted);
+
+                    position: relative;
+                    appearance: none;
+                    width: 20px;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+
+                    transition: 100ms ease-in-out;
+                    transition-property: border-color background-color;
+
+                        &::after {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+
+                            content: "";
+                            background-color: var(--bg-light);
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                        }
+
+                    &:hover {
+                        border-color: var(--primary-muted);
+                    }
+
+                    &:checked {
+                        border-color: var(--primary);
+
+                        &::after {
+                            background-color: var(--primary);
+                        }
+                    }
+                }
+            }
+        }
+
+        .quiz-buttons-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            button {
+                background-color: var(--primary);
+                color: var(--bg-light);
+
+                border: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                font-size: 1em;
+                padding: 1em 2.5em;
+                border-radius: 8px;
             }
         }
     }
