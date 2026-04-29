@@ -66,12 +66,12 @@ main {
 
         .quiz-title-wrapper {
             display: grid;
-            grid-template-columns: auto 1fr;
+            grid-template-columns: auto auto 1fr;
             grid-template-rows: auto 1fr;
             grid-template-areas:
-            "area-1 area-2"
-            "area-1 area-3";
-            gap: 0.25em 1.25em;
+            "area-1 area-2 area-4"
+            "area-1 area-3 area-3";
+            gap: 0.25em 0.25em;
 
             img {
                 padding-top: 6px;
@@ -82,9 +82,64 @@ main {
             font-family: 'Quicksand';
             font-weight: 700;
             color: var(--text);
+
+
         }
 
-        .quiz-progress-bar-wrapper {
+        #quiz-info-popover-wrapper {
+            width: fit-content;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 3px;
+
+            #quiz-info-popover-button {
+                border: none;
+                background: none;
+
+                i {
+                    font-size: 16px;
+                    color: var(--border);
+                
+                    transition: 100ms ease-in-out;
+                    transition-property: color;
+
+                    &:hover {
+                        color: var(--border-muted);
+                    }
+                }
+            }
+
+            #quiz-info-popover-menu {
+                background-color: var(--bg-alt);
+                border: 2px solid var(--border-muted);
+                
+                padding: 0.5em 0.75em;
+                border-radius: 6px;
+                width: fit-content;
+                display: none;
+                position: absolute;
+                flex-direction: column;
+                gap: 0.5em;
+
+                top: 50%;
+                margin-top: 14px;
+
+                h4 {
+                    white-space: nowrap;
+                }
+
+                span {
+                    color: var(--text-extra-muted);
+                }
+            }
+
+            &:hover #quiz-info-popover-menu {
+                display: flex;
+            } 
+        }
+
+        .quiz-progress-wrapper {
             display: flex;
             justify-content: flex-end;
 
@@ -95,14 +150,27 @@ main {
                 grid-template-areas:
                     "area-1 area-1"
                     "area-2 area-3";
-                gap: 0.25em;
+                gap: 0 0.5em;
                 align-items: center;
 
-                #progress-bar {
-                    width: 280px;
-                    height: 14px;
-                    background: linear-gradient(90deg, var(--primary) 17%, var(--bg-dark) 17%);
-                    border-radius: 28px;
+                .quiz-progress-bar-wrapper {
+                    display: flex;
+                    gap: 4px;
+
+                    .quiz-progress-bar {
+                        width: 140px;
+                        height: 14px;
+                        background-color: var(--bg-dark);
+                        border-radius: 28px;
+                    }
+
+                    #progress-bar-part-1 {
+                        background: linear-gradient(90deg, var(--primary) 17%, var(--bg-dark) 17%);
+                    }
+
+                    #progress-bar-part-2 {
+                        background: linear-gradient(90deg, var(--primary) 0%, var(--bg-dark) 0%);
+                    }
                 }
             }
         }
@@ -130,10 +198,10 @@ main {
 
         .quiz-choices-wrapper {
             list-style: none;
+            flex: 1;
             display: flex;
             flex-direction: column;
             gap: 0.75em;
-            flex: 1;
 
             .quiz-choice {
                 background-color: var(--bg-alt);
@@ -144,6 +212,18 @@ main {
                 align-items: center;
                 gap: 1.5em;
                 padding: 0.75em 1em;
+
+                transition: 125ms ease-in-out;
+                transition-property: border-color background-color;
+
+                &:hover {
+                    border-color: var(--border);
+                }
+
+                &:has(input:checked) {
+                    border-color: var(--primary);
+                    background-color: var(--bg-light);
+                }
 
                 input {
                     background-color: var(--bg-light);
@@ -172,7 +252,7 @@ main {
                         }
 
                     &:hover {
-                        border-color: var(--primary-muted);
+                        border-color: var(--border);
                     }
 
                     &:checked {
@@ -189,7 +269,7 @@ main {
         .quiz-buttons-wrapper {
             display: flex;
             justify-content: flex-end;
-            align-items: center;
+            align-items: flex-start;
 
             button {
                 background-color: var(--primary);
@@ -203,6 +283,16 @@ main {
                 font-size: 1em;
                 padding: 1em 2.5em;
                 border-radius: 8px;
+
+                transition: 100ms ease-in-out;
+                transition-property: opacity;
+
+                &:hover {
+                    opacity: 0.9;
+                }
+                &:active {
+                    opacity: 0.7;
+                }
             }
         }
     }

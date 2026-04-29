@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="styles/nav-sidebar.css">
     <link rel="stylesheet" href="styles/quiz.css">
+    <script src="scripts/quiz/quiz-controller.js" type="module"></script>
 </head>
 <body>
     <nav class="nav-sidebar grid-1">
@@ -61,45 +62,60 @@
             <div class="quiz-header-wrapper">
                 <div class="quiz-title-wrapper">
                     <img class="grid-1" src="assets/icons/leaf-icon.svg" width="20">
-                    <h2 class="grid-2">Quiz</h2>
+                    <h2 class="grid-2">Quiz — Part 1 of 2</h2>
+                    <div class="grid-4" id="quiz-info-popover-wrapper">
+                        <button id="quiz-info-popover-button">
+                            <i class="fa-regular fa-circle-question"></i>
+                        </button>
+                        <div id="quiz-info-popover-menu">
+                            <h4>This quiz is divided into 2 parts.</h4>
+                            <p>Part 1 will ask you to guess the resource consumption of various online services.</p>
+                            <p>Part 2 will ask you about your own personal consumption, and is meant to help you cut down on how much you waste.</p>
+                        </div>
+                    </div>
                     <p class="grid-3">How many resources are we actually using?</p>
                 </div>
-                <div class="quiz-progress-bar-wrapper">
+                <div class="quiz-progress-wrapper">
                     <div>
-                        <p class="grid-1">Question 1 of 6</p>
-                        <div class="grid-2" id="progress-bar"></div>
-                        <p class="grid-3" id="progress-label">17%</p>
+                        <p class="grid-1" id="quiz-question-label">Question 1 of 6</p>
+                        <div class="grid-2 quiz-progress-bar-wrapper">
+                            <div class="quiz-progress-bar" id="progress-bar-part-1"></div>
+                            <div class="quiz-progress-bar" id="progress-bar-part-2"></div>
+                        </div>
+                        <p class="grid-3" id="quiz-progress-label">8%</p>
                     </div>
                 </div>
             </div>
-
-            <form class="quiz-main-wrapper">
+            
+            <form class="quiz-main-wrapper" id="quiz-form">
                 <div class=" grid-1 quiz-question-wrapper">
-                    <img class="grid-1" src="assets/icons/question-email-big.svg" width="60"></img>
-                    <h2 class="grid-2">How many e-mails do you receive daily?</h2>
-                    <span class="grid-3">E-mails are saved in datacenters that use a lot of energy.<br>Less trash = less emissions</span>
+                    <img class="grid-1" src="assets/icons/question-email-big.svg" width="60" id="quiz-question-icon"></img>
+                    <h2 class="grid-2" id="quiz-question-title">How many e-mails do you receive daily?</h2>
+                    <span class="grid-3" id="quiz-question-description">E-mails are saved in datacenters that use a lot of energy.<br>Less trash = less emissions</span>
                 </div>
                 
-                <ul class="quiz-choices-wrapper">
+                <ul class="quiz-choices-wrapper" id="quiz-choices-wrapper">
                     <label class="quiz-choice">
-                        <input type="radio" id="quiz-choice-1" name="quiz-choice">
+                        <input type="radio" id="quiz-choice-1" name="quiz-choice" value="5">
                         <img src="assets/icons/question-email-small.svg" width="40"></img>
                         <span class="quiz-choice-text">0 — 10 e-mails</span>
                     </label>
                     <label class="quiz-choice">
-                        <input type="radio" id="quiz-choice-2" name="quiz-choice">
+                        <input type="radio" id="quiz-choice-2" name="quiz-choice" value="30">
                         <img src="assets/icons/question-email-small.svg" width="40"></img>
                         <span class="quiz-choice-text">10 — 50 e-mails</span>
                     </label>
                     <label class="quiz-choice">
-                        <input type="radio" id="quiz-choice-3" name="quiz-choice">
+                        <input type="radio" id="quiz-choice-3" name="quiz-choice" value="75">
                         <img src="assets/icons/question-email-small.svg" width="40"></img>
                         <span class="quiz-choice-text">50+ e-mails</span>
                     </label>
                 </ul>
 
                 <div class="quiz-buttons-wrapper">
-                    <button type="submit" id="quiz-next-question-button">Next question <i class="fa-solid fa-arrow-right-long"></i></button>
+                    <!-- Next question <i class="fa-solid fa-arrow-right-long"></i>  -->
+                    <!-- Check answer -->
+                    <button type="submit" id="quiz-next-question-button">Check answer</button>
                 </div>
             </form>
         </section>

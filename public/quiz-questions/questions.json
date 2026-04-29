@@ -1,0 +1,92 @@
+{
+    "parts": [
+        [
+            {
+                "type": "multi-choice",
+                "name-id": "tiktok-100",
+                "title": "If 100 people were to watch tiktok for 15 minutes, how much energy would be used?",
+                "description": "",
+                "icon-filename": "question-email-big.svg",
+                "choices": [
+                    {
+                        "text": "~ 0.12 kWh",
+                        "value": "false",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "Enough to power the average apartment for 2 hours.",
+                        "value": "true",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "~ 2.5 kWh",
+                        "value": "true",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "The same as charging the average electric car.",
+                        "value": "false",
+                        "icon-filename": "question-email-small.svg"
+                    }
+                ],
+                "after-answer-text": "In Norway, according to <a href='https://www.elvia.no/smart-forbruk/forbruk-og-sparing/normalt-stromforbruk/'>elvia.no</a>, the average apartment uses 10 899 kWh per year"
+            },
+            {
+                "type": "multi-choice",
+                "name-id": "video-quality",
+                "title": "How much more energy does streaming in 4K use compared to 480p?",
+                "description": "",
+                "icon-filename": "question-email-big.svg",
+                "choices": [
+                    {
+                        "text": "About the same",
+                        "value": "false",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "2x more",
+                        "value": "false",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "5—10x more",
+                        "value": "true",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "50x more",
+                        "value": "false",
+                        "icon-filename": "question-email-small.svg"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "type": "multi-choice",
+                "name-id": "email",
+                "title": "How many e-mails do you receive daily?",
+                "description": "E-mails are saved in datacenters that use a lot of energy.<br>Less trash = less emissions",
+                "icon-filename": "question-email-big.svg",
+                "choices": [
+                    {
+                        "text": "0—10 e-mails",
+                        "value": "5",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "10—50 e-emails",
+                        "value": "30",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "50+ e-emails",
+                        "value": "75",
+                        "icon-filename": "question-email-small.svg"
+                    }
+                ]
+            }
+        ]
+    ]
+}
+
