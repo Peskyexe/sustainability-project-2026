@@ -1,52 +1,103 @@
-import { fetchQuizQuestions } from "./question-loading.js";
-import { showQuestion } from "./question-updating.js";
+import { initalizeProgressDisplay, updateProgressDisplay } from "./quiz-progress-display.js";
+import { loadQuestion } from "./quiz-questions.js";
+import { animateQuestionEnter, animateQuestionExit, resetAnimationState } from "./quiz-animations.js";
+
+import { enterResponseStage } from "./stages/response.stage.js";
+import { enterQuestionStage } from "./stages/question.stage.js";
+import { nextPartStage } from "./stages/next-part.stage.js";
 
 
-const quizQuestions = await fetchQuizQuestions();
 
-let questionIndex = 0;
-let stage = 0;
-let partIndex = 0;
+async function getQuizData() {
+    try {
+        const response = await fetch('./quiz-questions/questions.json');
 
-showQuestion(quizQuestions.parts[partIndex][questionIndex]);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        return data
+
+    } catch (error) {
+        console.error('There was an error loading the JSON:', error);
+    }
+}
+
+const quizData = await getQuizData();
+let userAnswers = [[], []];
+let questionCountForPart = [2, 1];
+const totalPartCount = quizData.parts.length;
+const quizChoicesWrapper = document.getElementById("quiz-choices-wrapper");
+
+const stateIndexes = {
+    "questionIndex": 0,
+    "partIndex": 0,
+    "selectedChoiceIndex": 0,
+    "stageIndex": 0
+}
+
+export { quizData, stateIndexes, questionCountForPart, totalPartCount };
+
+
+let selectionMade = false;
+
+// Updates CSS classes whenever one of the choices in the quiz gets selected
+quizChoicesWrapper.addEventListener('change', (event) => {
+    if (event.target.type === 'radio' && quizChoicesWrapper.classList.contains("active")) {
+        const radioButtons = Array.from(document.querySelectorAll(`input[name="${event.target.name}"]`));
+        const newSelectionIndex = radioButtons.indexOf(event.target);
+
+        try { radioButtons[stateIndexes.selectedChoiceIndex].parentElement.classList.remove("selected", "checked"); } catch {}
+        radioButtons[newSelectionIndex].parentElement.classList.add("selected", "checked");
+
+        selectionMade = true;
+        stateIndexes.selectedChoiceIndex = newSelectionIndex;
+    }
+});
+
+
+initalizeProgressDisplay();
+
+const quizTitle = document.getElementById("quiz-title");
+quizTitle.innerHTML = `Quiz — Part ${stateIndexes.partIndex + 1} of ${totalPartCount}`
+
+loadQuestion(quizData.parts[stateIndexes.partIndex][stateIndexes.questionIndex]);
+animateQuestionEnter();
 
 
 const quizForm = document.getElementById("quiz-form");
-const nextButton = document.getElementById("quiz-next-question-button");
-
-quizForm.addEventListener('submit', (event) => {
+quizForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    if (stage === 0) {
-        nextButton.innerHTML = 'Next question <i class="fa-solid fa-arrow-right-long"></i>';
+    // Enter response stage
+    if (stateIndexes.stageIndex === 0) {
+        if (!selectionMade) return;
+        selectionMade = false;
 
-        checkAnswer();
+        stateIndexes.stageIndex += 1;
+        //if (stateIndexes.questionIndex + 1 === questionCountForPart[stateIndexes.partIndex]) stateIndexes.stageIndex = 2;
 
-        stage += 1;
+        userAnswers[stateIndexes.partIndex][stateIndexes.questionIndex] = stateIndexes.selectedChoiceIndex;
+        
+        enterResponseStage();
     }
 
-    else if (stage === 1) {
-        nextButton.innerHTML = 'Check answer';
-        questionIndex += 1;
+    // Enter question stage
+    else if (stateIndexes.stageIndex === 1) {
+        stateIndexes.stageIndex = 0;
 
-        nextQuestion();
+        await animateQuestionExit();
 
-        stage = 0;
+        enterQuestionStage();
+
+        resetAnimationState();
+        
+        await animateQuestionEnter();
     }
+
+    // Enter next part stage
+    else if (stateIndexes.stageIndex === 2) {
+        stateIndexes.stageIndex = 0;
+    }
+
+    updateProgressDisplay();
+    quizTitle.innerHTML = `Quiz — Part ${stateIndexes.partIndex + 1} of ${quizData.parts.length}`
 })
-
-
-function checkAnswer() {
-    
-}
-
-function nextQuestion() {
-    if (questionIndex > 5) {
-        questionIndex = 0;
-        partIndex += 1;
-    }
-
-    showQuestion(quizQuestions.parts[partIndex][questionIndex]);
-}
-
-

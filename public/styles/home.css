@@ -223,7 +223,7 @@ section {
 .card-box {
     padding: 20px;
     border-radius: 12px;
-    background-color: var(--bg);
+    background-color: var(--bg-alt);
     box-shadow: var(--shadow-light);
 }
 
@@ -232,11 +232,12 @@ section {
     grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
     padding: 20px;
     border-radius: 12px;
-    background-color: var(--bg);
+    background-color: var(--bg-alt);
     box-shadow: var(--shadow-light);
 
     .stats-seperation-line {
-        background-color: var(--primary-muted);
+        background-color: var(--text-muted);
+        opacity: 0.5;
         width: 2px;
     }
 }

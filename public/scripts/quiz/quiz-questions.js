@@ -16,7 +16,6 @@ function generateChoiceElement(choice) {
     const choiceRadio = document.createElement("input");
     choiceRadio.type = "radio";
     choiceRadio.name = "quiz-choice";
-    choiceRadio.value = choice.value;
     choiceWrapper.appendChild(choiceRadio);
 
     const choiceIcon = document.createElement("img");
@@ -33,16 +32,18 @@ function generateChoiceElement(choice) {
 }
 
 
-function showQuestion(questionData) {
-    updateQuestionHTML(questionData)
+function loadQuestion(questionData) {
+    updateQuestionHTML(questionData);
 
     choicesContainer.innerHTML = "";
+    let activeChoices = [];
     
     questionData.choices.forEach(choice => {
-        const choiceElement = generateChoiceElement(choice)
-        console.log(choiceElement)
-        choicesContainer.appendChild(choiceElement)
+        const choiceElement = generateChoiceElement(choice);
+
+        choicesContainer.appendChild(choiceElement);
+        activeChoices.push(choiceElement);
     });
 }
 
-export { showQuestion };
+export { loadQuestion };
