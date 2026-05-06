@@ -3,7 +3,7 @@
         [
             {
                 "name-id": "tiktok-100",
-                "title": "If 100 people were to watch tiktok for 15 minutes, how much energy would be used?",
+                "title": "If <strong>100</strong> people were to watch tiktok for <strong>15</strong> minutes, how much energy would be used?",
                 "description": "",
                 "icon-filename": "question-email-big.svg",
                 "choices": [

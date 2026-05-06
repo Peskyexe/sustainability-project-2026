@@ -65,4 +65,14 @@ async function animateQuestionExit(stagger = 80) {
     await waitForTransition(question);
 }
 
-export { animateQuestionEnter, animateQuestionExit, resetAnimationState };
+
+function animateErrorShakeOnElement(element) {
+    element.classList.add("error-shake");
+
+    element.addEventListener("animationend", () => {
+        element.classList.remove("error-shake");
+    }, { once: true });
+}
+
+
+export { animateQuestionEnter, animateQuestionExit, resetAnimationState, animateErrorShakeOnElement };

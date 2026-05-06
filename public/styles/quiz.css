@@ -199,6 +199,11 @@ main {
             "area-1 area-2"
             "area-1 area-3";
             gap: 0em 1.5em;
+
+            strong {
+                font-weight: 700;
+                color: var(--primary);
+            }
         }
 
 

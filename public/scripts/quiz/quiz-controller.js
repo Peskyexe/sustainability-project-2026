@@ -1,6 +1,6 @@
 import { initalizeProgressDisplay, updateProgressDisplay } from "./quiz-progress-display.js";
 import { loadQuestion } from "./quiz-questions.js";
-import { animateQuestionEnter, animateQuestionExit, resetAnimationState } from "./quiz-animations.js";
+import { animateQuestionEnter, animateQuestionExit, resetAnimationState, animateErrorShakeOnElement } from "./quiz-animations.js";
 
 import { enterResponseStage } from "./stages/response.stage.js";
 import { enterQuestionStage } from "./stages/question.stage.js";
@@ -69,7 +69,11 @@ quizForm.addEventListener('submit', async (event) => {
 
     // Enter response stage
     if (stateIndexes.stageIndex === 0) {
-        if (!selectionMade) return;
+        // If nothing selected, return
+        if (!selectionMade) {
+            animateErrorShakeOnElement(event.submitter);
+            return;
+        } 
         selectionMade = false;
 
         stateIndexes.stageIndex += 1;
