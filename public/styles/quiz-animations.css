@@ -1,9 +1,22 @@
+/* Shake animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+}
+
+.error-shake {
+    animation: shake 0.3s ease-in-out; 
+}
+
+
 /* Question group */
 #quiz-question-group {
     opacity: 0;
     transform: translateY(-20px);
 
-    transition: 500ms ease;
+    transition: 450ms ease;
     transition-property: opacity, transform;
 }
 
@@ -23,7 +36,7 @@
     opacity: 0;
     transform: translateX(-30px);
 
-    transition: 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: 350ms cubic-bezier(0.22, 1, 0.36, 1);
     transition-property: opacity, transform;
 }
 
@@ -38,14 +51,62 @@
 }
 
 
-/* Shake animation */
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(4px); }
-    75% { transform: translateX(-4px); }
+/* Button */
+#quiz-next-question-button {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition: 350ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-property: opacity, transform;
 }
 
-.error-shake {
-    animation: shake 0.3s ease-in-out; 
+#quiz-next-question-button.enter-active {
+    opacity: 1;
+    transform: translateY(0px);
 }
+
+#quiz-next-question-button.exit-active {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+
+/* Response group */
+#quiz-response-wrapper {
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition: 500ms ease;
+    transition-property: opacity, transform;
+}
+
+#quiz-response-wrapper.enter-active {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+#quiz-response-wrapper.exit-active {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+
+/* Next Part Group */
+#next-part-card {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 40px));
+
+    transition: 750ms ease;
+    transition-property: opacity, transform;   
+}
+
+#next-part-card.enter-active {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+#next-part-card.exit-active {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 40px));
+}
+

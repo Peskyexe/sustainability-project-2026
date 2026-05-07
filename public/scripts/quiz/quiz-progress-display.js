@@ -6,7 +6,7 @@ const questionLabel = document.getElementById("quiz-question-label");
 const progressLabel = document.getElementById("quiz-progress-label");
 
 
-const getProgressPercentage = () => { return ((stateIndexes.questionIndex + 1) / questionCountForPart[stateIndexes.partIndex]) * 100 };
+const getProgressPercentage = () => { return Math.floor(((stateIndexes.questionIndex + 1) / questionCountForPart[stateIndexes.partIndex]) * 100) };
 const updateQuestionLabel = () => questionLabel.innerHTML = `Question ${stateIndexes.questionIndex + 1} of ${questionCountForPart[stateIndexes.partIndex]}`;
 const updateProgressLabel = () => progressLabel.innerHTML = `${getProgressPercentage()}%`;
 
@@ -44,6 +44,7 @@ function updateProgressBars() {
         }
 
         else if (stateIndexes.partIndex == index) {
+            console.log(getProgressPercentage())
             progressBar.style.width = getProgressPercentage() + "%";
             progressBar.style.backgroundColor = "var(--primary)"
         }
@@ -71,7 +72,7 @@ function updateProgressDisplay() {
 
     // Next part stage
     else if (stateIndexes.stageIndex === 2) {
-        updateQuestionLabel();
+        questionLabel.innerHTML = `Question 1 of ${questionCountForPart[stateIndexes.partIndex]}`;
         progressLabel.innerHTML = "0%";
     }
 }

@@ -4,7 +4,7 @@
             {
                 "name-id": "tiktok-100",
                 "title": "If <strong>100</strong> people were to watch tiktok for <strong>15</strong> minutes, how much energy would be used?",
-                "description": "",
+                "description": "That's 25 hours of total watch time.",
                 "icon-filename": "question-email-big.svg",
                 "choices": [
                     {
@@ -25,12 +25,11 @@
                     }
                 ],
                 "correct-answer-indexes": [1, 2],
-                "after-answer-html": "<span>100 people watching TikTok for 15 minutes equates to 25 hours of total watch time, that amount of watch time (based on <a href='#'>our calculations</a>) corresponds to around 1.5 to 4.5 kWh of energy consumption. In Norway, according to <a href='https://www.elvia.no/smart-forbruk/forbruk-og-sparing/normalt-stromforbruk/'>elvia.no</a>, the average apartment uses roughly 10 899 kWh per year. 10 899 kWh a year is equal to ~ 2.5 kWh every hour.</span><a href='#'><i class='fa-solid fa-book-open'></i>Read more about this subject</a>"
+                "response-html": "<h3>With 2.5 kWh of electricity, you can charge the average smartphone approximately 130 to 160 times!</h3><span>100 people watching TikTok for 15 minutes equates to around 1.5 to 4.5 kWh of energy. In Norway, according to <a href='https://www.elvia.no/smart-forbruk/forbruk-og-sparing/normalt-stromforbruk/'>elvia.no</a>, the average apartment uses roughly 10 899 kWh per year. 10 899 kWh a year is equal to ~ 2.5 kWh every 2 hours.</span><a href='#'><i class='fa-solid fa-book-open'></i>Read more about this subject</a>"
             },
             {
-                "name-id": "video-quality",
                 "title": "How much more energy does streaming in 4K UHD (2160p) use compared to 720p HD?",
-                "description": "",
+                "description": "4K has three times the vertical pixel count of 720p",
                 "icon-filename": "question-email-big.svg",
                 "choices": [
                     {
@@ -51,30 +50,99 @@
                     }
                 ],
                 "correct-answer-indexes": [2],
-                "after-answer-html": "<h4>The amount of data transfered while streaming grows exponetially based on video quality.</h4><span>A 4K UHD frame consists of ~ 8.3 million pixels, while a 720p HD frame only consists of ~ 0.9 million pixels. 4K offers over nine times as high of a resolution compared to 720p. As a consequence, 4K uses around nine tismes more energy then 720p.</span><a href='#'><i class='fa-solid fa-book-open'></i>Read more about this subject</a>"
+                "response-html": "<h4>The amount of data transfered while streaming grows exponetially based on video quality.</h4><span>A 4K UHD frame consists of ~ 8.3 million pixels, while a 720p HD frame only consists of ~ 0.9 million pixels. 4K offers over a nine times increase in resolution compared to 720p. As a consequence, 4K also uses around nine times more energy then 720p.</span><a href='#'><i class='fa-solid fa-book-open'></i>Read more about this subject</a>"
+            },
+            {
+                "title": "How much more energy does a ChatGPT request use compared to a regular Google search?",
+                "description": "",
+                "icon-filename": "question-email-big.svg",
+                "choices": [
+                    {
+                        "text": "About the same",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "2—3x more",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "5x more",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "10—20x more",
+                        "icon-filename": "question-email-small.svg"
+                    }
+                ],
+                "correct-answer-indexes": [3],
+                "response-html": "<h4>A single ChatGPT request uses roughly the same amount of energy as charging a smartphone for 3 minutes.</h4><span>A Google Search only looks for information and provides a response based on what it found, while ChatGPT needs to generate a response from scratch using massive neural networks that require significant computational power.</span><span>Due to the fundamental difference in their approach, ChatGPT uses approximately 10—20 times more energy then performing the exact same search on Google.</span><a href='#'><i class='fa-solid fa-book-open'></i>Read more about this subject</a>"
+            }
+            ,
+            {
+                "title": "Why does a simple ChatGPT request use far more energy than a normal Google search?",
+                "description": "",
+                "icon-filename": "question-email-big.svg",
+                "choices": [
+                    {
+                        "text": "AI models use a lot of computation to generate answers, while Google mainly retrieves pre-indexed results.",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "Google only uses renewable energy, while OpenAI only uses fossil energy.",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "ChatGPT is a newer system, and hasn't had the time to fully optimize it's energy consumption.",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "Because ChatGPT stores and processes each request individually, while Google reuses cached answers from previous searches.",
+                        "icon-filename": "question-email-small.svg"
+                    }
+                ],
+                "correct-answer-indexes": [0],
+                "response-html": "<h4>AI models like ChatGPT run billions of parameters through powerful computers for each response.</h4><span>Large language models run on very powerful, but also very energy hungry datacenters. These datacenters use a lot of resources on not just running the computers, but also for cooling and managing them. In comparison, search engines like Google only need to find pre-indexed information, which is way more efficient than generating a new answer every time.</span><a href='#'><i class='fa-solid fa-book-open'></i>Read more about this subject</a>"
             }
         ],
         [
             {
-                "type": "multi-choice",
-                "name-id": "email",
                 "title": "How many e-mails do you receive daily?",
                 "description": "E-mails are saved in datacenters that use a lot of energy.<br>Less trash = less emissions",
                 "icon-filename": "question-email-big.svg",
                 "choices": [
                     {
                         "text": "0—10 e-mails",
-                        "value": "5",
                         "icon-filename": "question-email-small.svg"
                     },
                     {
                         "text": "10—50 e-mails",
-                        "value": "30",
                         "icon-filename": "question-email-small.svg"
                     },
                     {
                         "text": "50+ e-mails",
-                        "value": "75",
+                        "icon-filename": "question-email-small.svg"
+                    }
+                ]
+            },
+            {
+                "title": "How many hours of your day are you usually on your phone?",
+                "description": "High daily phone usuage wastes a surprising amount of electricity",
+                "icon-filename": "question-email-big.svg",
+                "choices": [
+                    {
+                        "text": "Less than 1 hour",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "1—3 hours",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "3—6 hours",
+                        "icon-filename": "question-email-small.svg"
+                    },
+                    {
+                        "text": "More than 6 hours",
                         "icon-filename": "question-email-small.svg"
                     }
                 ]

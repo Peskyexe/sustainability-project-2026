@@ -1,11 +1,11 @@
 import { initalizeProgressDisplay, updateProgressDisplay } from "./quiz-progress-display.js";
 import { loadQuestion } from "./quiz-questions.js";
-import { animateQuestionEnter, animateQuestionExit, resetAnimationState, animateErrorShakeOnElement } from "./quiz-animations.js";
+import { checkForSelection } from "./quiz-choice-selection.js";
+import { animateQuestionEnter } from "./quiz-animations.js";
 
 import { enterResponseStage } from "./stages/response.stage.js";
 import { enterQuestionStage } from "./stages/question.stage.js";
-import { nextPartStage } from "./stages/next-part.stage.js";
-
+import { enterNextPartStage } from "./stages/next-part.stage.js";
 
 
 async function getQuizData() {
@@ -22,10 +22,12 @@ async function getQuizData() {
 }
 
 const quizData = await getQuizData();
+
+
 let userAnswers = [[], []];
-let questionCountForPart = [2, 1];
+
+let questionCountForPart = [quizData.parts[0].length, quizData.parts[1].length];
 const totalPartCount = quizData.parts.length;
-const quizChoicesWrapper = document.getElementById("quiz-choices-wrapper");
 
 const stateIndexes = {
     "questionIndex": 0,
@@ -37,31 +39,12 @@ const stateIndexes = {
 export { quizData, stateIndexes, questionCountForPart, totalPartCount };
 
 
-let selectionMade = false;
-
-// Updates CSS classes whenever one of the choices in the quiz gets selected
-quizChoicesWrapper.addEventListener('change', (event) => {
-    if (event.target.type === 'radio' && quizChoicesWrapper.classList.contains("active")) {
-        const radioButtons = Array.from(document.querySelectorAll(`input[name="${event.target.name}"]`));
-        const newSelectionIndex = radioButtons.indexOf(event.target);
-
-        try { radioButtons[stateIndexes.selectedChoiceIndex].parentElement.classList.remove("selected", "checked"); } catch {}
-        radioButtons[newSelectionIndex].parentElement.classList.add("selected", "checked");
-
-        selectionMade = true;
-        stateIndexes.selectedChoiceIndex = newSelectionIndex;
-    }
-});
-
-
 initalizeProgressDisplay();
 
-const quizTitle = document.getElementById("quiz-title");
-quizTitle.innerHTML = `Quiz — Part ${stateIndexes.partIndex + 1} of ${totalPartCount}`
-
 loadQuestion(quizData.parts[stateIndexes.partIndex][stateIndexes.questionIndex]);
-animateQuestionEnter();
 
+animateQuestionEnter();
+//enterNextPartStage();
 
 const quizForm = document.getElementById("quiz-form");
 quizForm.addEventListener('submit', async (event) => {
@@ -69,39 +52,30 @@ quizForm.addEventListener('submit', async (event) => {
 
     // Enter response stage
     if (stateIndexes.stageIndex === 0) {
-        // If nothing selected, return
-        if (!selectionMade) {
-            animateErrorShakeOnElement(event.submitter);
-            return;
-        } 
-        selectionMade = false;
-
-        stateIndexes.stageIndex += 1;
-        //if (stateIndexes.questionIndex + 1 === questionCountForPart[stateIndexes.partIndex]) stateIndexes.stageIndex = 2;
-
+        if (checkForSelection(event) === false) return
+        
+        // Save answers
         userAnswers[stateIndexes.partIndex][stateIndexes.questionIndex] = stateIndexes.selectedChoiceIndex;
         
         enterResponseStage();
+        
+        stateIndexes.stageIndex += 1;
+        updateProgressDisplay();
+
+        if (stateIndexes.questionIndex + 1 === questionCountForPart[stateIndexes.partIndex]) stateIndexes.stageIndex = 2;
     }
 
     // Enter question stage
     else if (stateIndexes.stageIndex === 1) {
-        stateIndexes.stageIndex = 0;
-
-        await animateQuestionExit();
-
         enterQuestionStage();
 
-        resetAnimationState();
-        
-        await animateQuestionEnter();
+        stateIndexes.stageIndex = 0;
     }
 
     // Enter next part stage
     else if (stateIndexes.stageIndex === 2) {
+        enterNextPartStage();
+
         stateIndexes.stageIndex = 0;
     }
-
-    updateProgressDisplay();
-    quizTitle.innerHTML = `Quiz — Part ${stateIndexes.partIndex + 1} of ${quizData.parts.length}`
 })

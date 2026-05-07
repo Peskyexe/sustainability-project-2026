@@ -2,11 +2,12 @@
 
 :root {
     --bg-dark: oklch(0.96 0.02 115);
+    --bg-dark-alt: oklch(0.96 0.01 125);
     --bg: oklch(0.98 0.01 125);
     --bg-light: oklch(0.99 0 125);
     --bg-alt: oklch(0.98 0 85);
 
-    --text: oklch(0.17 0.01 135);
+    --text: oklch(0.19 0.01 135);
     --text-muted: oklch(0.4 0.01 135);
 
     --highlight: oklch(1 0.01 135);
@@ -22,6 +23,11 @@
     --success-muted: oklch(0.8 0.06 160);
     --info: oklch(0.78 0.02 250);
     --info-muted: oklch(0.9 0.02 250);
+
+    --info-bg-dark: oklch(0.85 0.04 75);
+    --info-bg: oklch(0.95 0.04 75);
+
+    --link-color: oklch(0.4 0.25 240);
 
     --shadow: 0px 2px 2px oklch(0 0 0 / 0.15), 0px 4px 4px oklch(0 0 0 / 0.05);
     --shadow-light: 0px 2px 4px oklch(0 0 0 / 0.05);

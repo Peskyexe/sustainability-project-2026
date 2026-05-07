@@ -34,13 +34,13 @@
             </a>
 
             <a href="#">
-                <i class="fa-regular fa-clock"></i>
-                <p>History</p>
+                <i class="fa-regular fa-lightbulb"></i>
+                <p>Tips</p>
             </a>
 
             <a href="#">
-                <i class="fa-regular fa-lightbulb"></i>
-                <p>Tips</p>
+                <i class="fa-regular fa-clock"></i>
+                <p>History</p>
             </a>
 
             <a href="#">
@@ -74,7 +74,7 @@
                             <p>Part 2 will ask you about your own personal consumption, and is meant to help you cut down on how much you waste.</p>
                         </div>
                     </div>
-                    <p class="grid-3">How many resources are we actually using?</p>
+                    <p class="grid-3" id="quiz-description">How many resources are we actually using?</p>
                 </div>
                 <div class="quiz-progress-wrapper" id="quiz-progress-wrapper">
                     <div>
@@ -94,12 +94,27 @@
                     <span class="grid-3" id="quiz-question-description">Unloaded</span>
                 </div>
                 
-                <ul class="quiz-choices-wrapper active" id="quiz-choices-wrapper">
+                <ul class="grid-2 quiz-choices-wrapper active" id="quiz-choices-wrapper">
 
                 </ul>
 
-                <div class="quiz-buttons-wrapper">
+                <div class="grid-3 quiz-response-wrapper" id="quiz-response-wrapper">
+                    <header class="quiz-response-header">
+                        <h2 id="quiz-response-title">Correct!</h2>
+                    </header>
+                    <div class="quiz-response-text" id="quiz-response-text">
+
+                    </div>
+                </div>
+
+                <div class="grid-4 quiz-buttons-wrapper">
                     <button type="submit" id="quiz-next-question-button">Check answer</button>
+                </div>
+
+                <div class="next-part-card-wrapper" id="next-part-card">
+                    <h2 id="next-part-card-title">Ready for part 2?</h2>
+                    <span id="next-part-card-breadtext">In this section, we'll look at how everyday habits affect long-term energy use.</span>
+                    <button type="button" id="next-part-card-button">Start part 2</button>
                 </div>
             </form>
         </section>
